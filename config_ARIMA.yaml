@@ -1,0 +1,31 @@
+# config_ARIMA.yaml
+seed: 42
+data:
+  unobserved_proportion: 0.2
+  h: 24
+  N_sub: 25
+  u: 1
+  train_sample_size: 2000
+  val_sample_size: 2000
+  test_sample_size: 20000
+model:
+  name: "ARIMA"
+  params:
+    order: [1, 1, 1]
+loss:
+  name: "L1Loss"
+  params:
+    reduction: "mean"
+training:
+  epochs: 1
+  batch_size: 1
+  lr: 0.0
+  early_stopping_patience: 1
+  min_delta: 0.0
+  lr_scheduler: false
+  patience_lr: 1
+  factor_lr: 1.0
+paths:
+  save_path: "./checkpoints/best_model_arima.pth"
+  log_dir: "./logs/arima"
+device: "cpu"
